@@ -1,0 +1,49 @@
+{
+    "env": {
+        "cypress/globals": true
+    },
+    "plugins": [
+        "cypress"
+    ],
+    "rules": {
+        "cypress/no-assigning-return-values": "error",
+        "cypress/assertion-before-screenshot": "off",
+        "cypress/no-unnecessary-waiting": "off",
+        "cypress/no-async-tests": "error",
+        "cypress/no-pause": "off",
+        "camelcase": [
+            2,
+            {
+                "properties": "always",
+                "ignoreDestructuring": false,
+                "ignoreImports": false,
+                "ignoreGlobals": false
+            }
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "indent": [
+            "error",
+            4
+        ],
+        "max-len": [
+            "error",
+            100,
+            {
+                "ignoreComments": true
+            },
+            {
+                "ignoreStrings": true
+            }
+        ]
+    },
+    "extends": [
+        "plugin:cypress/recommended"
+    ]
+}
