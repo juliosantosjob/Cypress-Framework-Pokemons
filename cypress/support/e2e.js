@@ -14,7 +14,7 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands';
+import './commands/selectPok';
 import '../utils/hooks';
 
 // Alternatively you can use CommonJS syntax:

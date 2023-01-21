@@ -1,7 +1,8 @@
-/// <reference types='cypress' /> 
+/// <reference types='cypress' />
+
+import data from '../data/randomMass';
 
 describe('Selecionado Pokémons', function () {
-
     beforeEach(function () {
         cy.intercept('**/v2/type').as('pokeapi');
         cy.visit('/projetos/pokeapi');
@@ -10,25 +11,21 @@ describe('Selecionado Pokémons', function () {
         cy.get('p').should('contain', 'The perfect guide for those who want to hunt Pokémons around the world');
     });
 
-    it.skip('Buscando um pokemon na barra de busca', function () {
-        cy.intercept('**/pokemon/bulbasaur').as('wtdPokemon');
+    it('Buscando um pokemon na barra de busca', function () {
+        let wantedPokemon = data.getNamePok();
 
-        cy.fixture('dataTest').then(function (pok) {
-            const wantedPokemon = pok.pokBySearch;
+        cy.intercept(`**/pokemon/${wantedPokemon.toLowerCase()}`).as('wtdPokemon');
+        cy.get('#js-input-search').scrollIntoView()
+            .type(`${wantedPokemon}{enter}`, { delay: 80 });
 
-            cy.get('#js-input-search').scrollIntoView()
-                .type(`${wantedPokemon}{enter}`, { delay: 80 });
-
-            cy.wait('@wtdPokemon');
-            cy.get('button[class*="card"]')
-                .should('have.length', 1)
-                .and('be.visible')
-                .and('contain', `${wantedPokemon}`)
-                .screenshot();
-        });
+        cy.wait('@wtdPokemon');
+        cy.get('button[class*="card"]')
+            .should('have.length', 1)
+            .and('be.visible')
+            .and('contain', wantedPokemon);
     });
 
-    it.skip('Ao clicar em "Load more Pokémons" deve exibir 9 cards a mais', function () {
+    it('Ao clicar em "Load more Pokémons" deve exibir 9 cards a mais', function () {
         let numberCards = 9;
         cy.get('button[class*="card"]').should('have.length', numberCards).as('numberOk');
 
@@ -37,6 +34,21 @@ describe('Selecionado Pokémons', function () {
             if (cy.get('@numberOk')) numberCards = numberCards + 9;
             cy.get('button[class*="card"]').should('have.length', numberCards);
         };
-        cy.screenshot();
+    });
+
+    it('Verificar informações de um pokemon', function () {
+        let wantedPokemon = data.getNamePok();
+
+        cy.intercept(`**/pokemon/${wantedPokemon.toLowerCase()}`).as('wtdPokemon');
+        cy.get('#js-input-search').scrollIntoView()
+            .type(`${wantedPokemon}{enter}`, { delay: 80 });
+
+        cy.wait('@wtdPokemon');
+        cy.get('.card-pokemon').click();
+        cy.get('.box').should('contain', wantedPokemon);
+
+        cy.get('ul[class="info"]').children().first().should('contain', 'Height');
+        cy.get('ul[class="info"]').children().last().prev().should('contain', 'Weight');
+        cy.get('ul[class="info"]').children().last().should('contain', 'Abilities');
     });
 });
