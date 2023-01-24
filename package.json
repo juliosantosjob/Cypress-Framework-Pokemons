@@ -4,7 +4,7 @@
   "description": "Api automation training",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress run",
+    "test": "cypress run --config video=true",
     "open": "npx cypress open"
   },
   "keywords": [],
@@ -14,5 +14,8 @@
     "cypress": "^12.3.0",
     "dotenv": "^16.0.3",
     "eslint-plugin-cypress": "^2.12.1"
+  },
+  "dependencies": {
+    "cypress-plugin-api": "^2.10.0"
   }
 }
