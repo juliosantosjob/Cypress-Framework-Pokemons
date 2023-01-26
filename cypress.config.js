@@ -11,6 +11,7 @@ module.exports = defineConfig({
     e2e: {
         setupNodeEvents(on, config) {
             config.baseUrl = process.env.BASE_URL;
+            config.env.API_POK = process.env.API_POK;
 
             on('task', {
                 deleteFolder(path) {
