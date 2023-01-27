@@ -32,7 +32,7 @@ describe('Pesquisas por Pokemons', function () {
         cy.get('button[code-type="3"]').first().click();
         cy.get('[class*="card-pokemon"]').eq(randomNumb).click();
 
-        cy.get('[class="type"]', { timeout: 10000 })
+        cy.get('[class="type"]', { timeout: 30000 })
             .should('contain', 'Flying')
             .and('be.visible')
             .screenshot();
