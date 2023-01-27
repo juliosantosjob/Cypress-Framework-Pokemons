@@ -27,6 +27,6 @@ jobs:
         uses: crazy-max/ghaction-github-pages@v3
         with:
           target_branch: gh-pages
-          build_dir: cypress/reports/html/index.html
+          build_dir: ./cypress/reports/html/index.html
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
