@@ -45,7 +45,7 @@ describe('Pesquisas por Pokemons', function () {
             .and('not.be.empty');
 
         cy.get('[class*="card-pokemon"]')
-            .should('not.exist')
-            .screenshot();
+            .should('not.exist');
+        cy.screenshot();
     });
 });
