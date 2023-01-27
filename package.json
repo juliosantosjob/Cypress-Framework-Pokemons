@@ -5,16 +5,19 @@
   "main": "index.js",
   "scripts": {
     "test": "cypress run --config video=true",
-    "open": "npx cypress open"
+    "open": "cypress open",
+    "test:report": "cypress run --spec cypress/e2e/** --browser chrome"
   },
   "keywords": [],
   "author": "Julio Santos",
   "license": "ISC",
   "devDependencies": {
     "cypress": "^12.3.0",
+    "cypress-mochawesome-reporter": "^3.2.3",
     "cypress-multi-reporters": "^1.6.2",
     "dotenv": "^16.0.3",
-    "eslint-plugin-cypress": "^2.12.1"
+    "eslint-plugin-cypress": "^2.12.1",
+    "typescript": "^4.9.4"
   },
   "dependencies": {
     "cypress-plugin-api": "^2.10.0"
