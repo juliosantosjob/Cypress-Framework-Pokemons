@@ -14,7 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Cypress run
+      - name: Runner Tests
         uses: cypress-io/github-action@v5
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
