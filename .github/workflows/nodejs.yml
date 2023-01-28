@@ -45,4 +45,4 @@ jobs:
           subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
           body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
           to: julio958214@gmail.com
-          from: John Doe
+          from: Julio Santos 
