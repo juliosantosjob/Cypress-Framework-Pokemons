@@ -40,11 +40,10 @@ jobs:
           server_address: smtp.gmail.com
           server_port: 465
 
-          username: ${{ secrets.MAIL_USERNAME }}
-          password: ${{ secrets.MAIL_PASSWORD }}
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
 
           subject: Github Actions job result
           to: julio958214@gmail.com
-          
           from: Luke Skywalker
           body: Build job of ${{ github.repository }} completed successfully!  
