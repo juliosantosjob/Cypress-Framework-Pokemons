@@ -26,7 +26,6 @@ describe('Pesquisas por Pokemons', function () {
             .screenshot();
     });
 
-
     it('Buscando pokemons voadores', function () {
         let randomNumb = Math.floor(Math.random() * 90);
 
