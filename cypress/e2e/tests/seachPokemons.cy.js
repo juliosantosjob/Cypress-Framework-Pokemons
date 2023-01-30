@@ -26,18 +26,19 @@ describe('Pesquisas por Pokemons', function () {
             .screenshot();
     });
 
-    it('Buscando pokemons voadores', function () {
-        let randomNumb = Math.floor(Math.random() * 90);
+    Cypress._.times(12, () => {
+        it.only('Buscando pokemons voadores', function () {
+            let randomNumb = Math.floor(Math.random() * 90);
 
-        cy.get('button[code-type="3"]').first().click();
-        cy.get('[class*="card-pokemon"]').eq(randomNumb).click();
+            cy.get('button[code-type="3"]').first().click();
+            cy.get('[class*="card-pokemon"]').eq(randomNumb).click();
 
-        cy.get('[class="type"]', { timeout: 30000 })
-            .should('contain', 'Flying')
-            .and('be.visible')
-            .screenshot();
+            cy.get('div[class="box"]')
+                .should('contain', 'Flying')
+                .and('be.visible')
+                .screenshot();
+        });
     });
-
     it('Procurando um pokemon que não existe', function () {
         cy.searchPokemon('its_not_pokemon');
         cy.get('strong[class="js-count-pokemons"]')
