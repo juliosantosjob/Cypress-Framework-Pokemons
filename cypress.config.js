@@ -14,22 +14,6 @@ module.exports = defineConfig({
             config.env.API_POK = process.env.API_POK;
             require('cypress-mochawesome-reporter/plugin')(on);
 
-            on('task', {
-                deleteFolder(path) {
-                    if (fs.existsSync(path)) {
-                        return new Promise((resolve, reject) => {
-                            rmdir(path, { recursive: true }, (err) => {
-                                if (err) {
-                                    return reject(err);;
-                                }
-                                resolve(null);
-                            });
-                        });
-                    }
-                    return null;
-                }
-            });
-
             return config;
         },
     },
