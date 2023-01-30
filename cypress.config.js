@@ -1,7 +1,4 @@
 const { defineConfig } = require('cypress');
-const { rmdir } = require('fs');
-const fs = require('fs');
-
 require('dotenv').config();
 
 module.exports = defineConfig({
