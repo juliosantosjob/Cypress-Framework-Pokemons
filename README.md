@@ -26,7 +26,9 @@ npm install
 npm run test
 ```
 
-Visualize os resultados da ultima execução clicando [aqui](https://juliosantosjob.github.io/Cypress-Framework-Pokemons/)
+## Baixando e Executando o projeto
+
+Utilize o Mochawesome Reporter, visualize os resultados da ultima execução clicando [aqui](https://juliosantosjob.github.io/Cypress-Framework-Pokemons/)
 
  
 [<img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" />](https://www.linkedin.com/in/julio-santos-43428019b)
