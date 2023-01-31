@@ -26,7 +26,7 @@ npm install
 npm run test
 ```
 
-## Baixando e Executando o projeto
+## Reports
 
 Utilize o Mochawesome Reporter, visualize os resultados da ultima execução clicando [aqui](https://juliosantosjob.github.io/Cypress-Framework-Pokemons/)
 
