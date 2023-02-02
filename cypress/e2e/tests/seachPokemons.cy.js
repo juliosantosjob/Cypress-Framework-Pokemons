@@ -27,7 +27,7 @@ describe('Pesquisas por Pokemons', function () {
     });
 
     it('Buscando pokemons voadores', function () {
-        let randomNumb = Math.floor(Math.random() * 90);
+        let randomNumb = Math.floor(Math.random() * 9);
 
         cy.get('button[code-type="3"]').first().click();
         cy.get('[class*="card-pokemon"]')
