@@ -15,7 +15,7 @@ describe('Informações de um pokemon', function () {
         });
     });
 
-    it('Deve retornar 400 um pokemon inexististe', function () {
+    it('Deve retornar 404 para um pokemon inexististe', function () {
         cy.api({
             method: 'GET',
             url: urlPok + '/pokemon/non_existent_pokemon',
@@ -26,7 +26,7 @@ describe('Informações de um pokemon', function () {
         });
     });
 
-    it('Deve retornar 200 a busca pela lista de pokemons', function () {
+    it('Deve retornar 200 ao buscar pela lista de pokemons', function () {
         cy.api({
             method: 'GET',
             url: urlPok,
