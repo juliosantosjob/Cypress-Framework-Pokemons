@@ -30,7 +30,8 @@ describe('Pesquisas por Pokemons', function () {
         let randomNumb = Math.floor(Math.random() * 90);
 
         cy.get('button[code-type="3"]').first().click();
-        cy.get('[class*="card-pokemon"]').eq(randomNumb).click();
+        cy.get('[class*="card-pokemon"]')
+            .eq(randomNumb).click({ force: true });
 
         cy.get('div[class="box"]')
             .should('contain', 'Flying')
