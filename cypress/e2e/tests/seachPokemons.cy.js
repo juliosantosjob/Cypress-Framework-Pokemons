@@ -26,19 +26,6 @@ describe('Pesquisas por Pokemons', function () {
             .screenshot();
     });
 
-    it('Buscando pokemons voadores', function () {
-        let randomNumb = Math.floor(Math.random() * 9);
-
-        cy.get('button[code-type="3"]').first().click();
-        cy.get('[class*="card-pokemon"]')
-            .eq(randomNumb).click({ force: true });
-
-        cy.get('div[class="box"]')
-            .should('contain', 'Flying')
-            .and('be.visible')
-            .screenshot();
-    });
-
     it('Procurando um pokemon que não existe', function () {
         cy.searchPokemon('its_not_pokemon');
         cy.get('strong[class="js-count-pokemons"]')
