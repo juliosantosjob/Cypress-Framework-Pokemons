@@ -28,7 +28,7 @@ npm run test
 
 ## Reports
 
-Utilizei o Mochawesome Reporter visualizar os resultados em Ci, veja os resultados da ultima execução clicando [aqui.](https://juliosantosjob.github.io/Cypress-Framework-Pokemons/)
+Utilizei o Mochawesome Reporter para visualizar os resultados em Ci, veja os resultados da ultima execução clicando [aqui.](https://juliosantosjob.github.io/Cypress-Framework-Pokemons/)
 
  
 [<img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" />](https://www.linkedin.com/in/julio-santos-43428019b)
