@@ -11,7 +11,7 @@ describe('Informações de um pokemon', function () {
             expect(response.status).to.eq(200);
             expect(response.body).to.be.not.null;
             expect(response.body.results[1].name).to.eq('ivysaur');
-            expect(response.body.results[1].url).to.eq(urlPok + '/pokemon-form/2/');
+            expect(response.body.results[1].url).to.eq(urlPok + 'pokemon-form/2/');
         });
     });
 
