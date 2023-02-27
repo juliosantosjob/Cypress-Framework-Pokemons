@@ -2,7 +2,7 @@
 
 import data from '../../data/randomMass';
 
-describe('Selecionado Pokémons', function () {
+describe('Selecionando Pokémons', function () {
     beforeEach(function () {
         cy.intercept('**/v2/type').as('pokeapi');
         cy.visit('/projetos/pokeapi');

@@ -2,7 +2,7 @@
 
 import data from '../../data/randomMass';
 
-describe('Pesquisas por Pokemons', function () {
+describe('Pesquisando Pokemons', function () {
     beforeEach(function () {
         cy.intercept('**/v2/type').as('pokeapi');
         cy.visit('/projetos/pokeapi');

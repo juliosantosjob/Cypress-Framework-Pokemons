@@ -11,7 +11,7 @@ Projeto de Automação de testes E2E e API na pokeapi.
 * Clone o projeto em sua maquina.
 
 ```
-git clone https://github.com/juliosantosjob/Web-Functional-Tests-Cy.git
+git clone https://github.com/juliosantosjob/Cypress-Framework-Pokemons.git
 ```
 
 * Com o NodeJs instalado rode o comando a baixo para instalar as dependências do projeto
