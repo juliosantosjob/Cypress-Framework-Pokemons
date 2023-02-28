@@ -3,18 +3,9 @@
 import data from '../../data/randomMass';
 
 describe('Pesquisando Pokemons', function () {
-    beforeEach(function () {
-        cy.intercept('**/v2/type').as('pokeapi');
-        cy.visit('/projetos/pokeapi');
-
-        cy.wait('@pokeapi');
-        cy.get('p').should('contain',
-            'The perfect guide for those who want to hunt Pokémons around the world');
-    });
+    const wantedPokemon = data.getRandomPok();
 
     it('Buscando um pokemon aleatório na barra de busca', function () {
-        let wantedPokemon = data.getRandomPok();
-
         cy.intercept(`**/pokemon/${wantedPokemon.toLowerCase()}`).as('wtdPokemon');
         cy.get('#js-input-search').scrollIntoView().type(`${wantedPokemon}{enter}`, { delay: 80 });
 
@@ -32,8 +23,7 @@ describe('Pesquisando Pokemons', function () {
             .should('have.value', '')
             .and('not.be.empty');
 
-        cy.get('[class*="card-pokemon"]')
-            .should('not.exist');
+        cy.get('[class*="card-pokemon"]').should('not.exist');
         cy.screenshot();
     });
 });
