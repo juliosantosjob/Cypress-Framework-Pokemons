@@ -42,7 +42,7 @@ describe('Selecionando Pokémons', function () {
 
     it('Deve ser possível fechar um card de informações de um pokemon', function () {
         cy.searchPokemon(wantedPokemon);
-        cy.get('.card-pokemon').click();
+        cy.get('.card-pokemon').first().click();
         cy.get('[class="box"]')
             .should('exist')
             .and('be.visible');
