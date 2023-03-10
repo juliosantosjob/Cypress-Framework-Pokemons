@@ -20,7 +20,7 @@ describe('Selecionando Pokémons', function () {
 
     it('Deve visualizar as informações de um pokemon', function () {
         cy.searchPokemon(wantedPokemon);
-        cy.get('.card-pokemon').click();
+        cy.get('.card-pokemon').first().click();
         cy.get('.box').should('contain', wantedPokemon);
 
         cy.get('ul[class="info"]').children().first().should('contain', 'Height');
@@ -31,7 +31,7 @@ describe('Selecionando Pokémons', function () {
 
     it('Visualizando a opção "ver mais" nas descrições de um pokemon', function () {
         cy.searchPokemon('blastoise');
-        cy.get('.card-pokemon').click();
+        cy.get('.card-pokemon').first().click();
         cy.get('#js-show-more-abilities').click();
 
         cy.get('#js-ballon-abilities')
