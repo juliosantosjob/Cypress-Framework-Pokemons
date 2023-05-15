@@ -12,7 +12,7 @@ describe('Selecionando Pokémons', function () {
 
         for (let i = 0; i < 5; i++) {
             cy.get('#js-show-more').scrollIntoView().click();
-            if (cy.get('@numberOk')) numberCards = numberCards + 9;
+            if (cy.get('@numberOk')) numberCards += 9;
             cy.get('button[class*="card"]').should('have.length', numberCards);
         };
         cy.screenshot();
