@@ -1,6 +1,6 @@
 # Cypress Framework Pokemons
 
-Projeto de Automação de testes E2E e API na pokeapi.
+Projeto de Automação de testes E2E no site Codeboost.
 
 ## Dependências Necessárias
 
