@@ -7,14 +7,16 @@ describe('Selecionando Pokémons', function () {
     let numberCards = 9;
 
     it('Ao clicar em "Load more Pokémons" deve exibir 9 cards a mais', function () {
-        cy.get('button[class*="card"]')
-            .should('have.length', numberCards).as('numberOk');
+        while (numberCards != 45) {
+            cy.get('button[class*="card"]')
+                .should('have.length', numberCards).as('numberOk');
 
-        for (let i = 0; i < 5; i++) {
             cy.get('#js-show-more').scrollIntoView().click();
             if (cy.get('@numberOk')) numberCards += 9;
+
+            cy.log(numberCards);
             cy.get('button[class*="card"]').should('have.length', numberCards);
-        };
+        }
         cy.screenshot();
     });
 
