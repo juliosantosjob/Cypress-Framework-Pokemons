@@ -20,7 +20,7 @@ git clone https://github.com/juliosantosjob/Cypress-Framework-Pokemons.git
 npm install
 ```
 
-* Execute o projeto rodando
+* Execute rodando
 
 ```
 npm run test
