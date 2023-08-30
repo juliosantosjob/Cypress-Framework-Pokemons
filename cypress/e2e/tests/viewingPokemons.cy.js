@@ -7,7 +7,7 @@ describe('Selecionando Pokémons', function () {
     let numberCards = 9;
 
     it('Ao clicar em "Load more Pokémons" deve exibir 9 cards a mais', function () {
-        while (numberCards != 45) {
+        while (numberCards != (4 * numberCards)) {
             cy.get('button[class*="card"]')
                 .should('have.length', numberCards).as('numberOk');
 
