@@ -1,29 +1,24 @@
-/// <reference types='cypress' />
-
-import data from '../../data/randomMass';
+import { randomPokemons } from '../../support/randomMass';
 
 describe('Selecionando Pokémons', function () {
-    const wantedPokemon = data.getRandomPok();
-    let numberCards = 9;
+    const pokemon = randomPokemons();
+    let numCards = 9;
 
     it('Ao clicar em "Load more Pokémons" deve exibir 9 cards a mais', function () {
-        while (numberCards != (4 * numberCards)) {
-            cy.get('button[class*="card"]')
-                .should('have.length', numberCards).as('numberOk');
-
+        while (numCards !== 36) {
+            cy.get('button[class*="card"]').should('have.length', numCards).as('initialCards');
             cy.get('#js-show-more').scrollIntoView().click();
-            if (cy.get('@numberOk')) numberCards += 9;
 
-            cy.log(numberCards);
-            cy.get('button[class*="card"]').should('have.length', numberCards);
+            cy.get('@initialCards').should('have.length', numCards);
+            numCards += 9;
+            cy.get('button[class*="card"]').should('have.length', numCards);
         }
-        cy.screenshot();
     });
 
     it('Deve visualizar as informações de um pokemon', function () {
-        cy.searchPokemon(wantedPokemon);
+        cy.searchPokemon(pokemon);
         cy.get('.card-pokemon').first().click();
-        cy.get('.box').should('contain', wantedPokemon);
+        cy.get('.box').should('contain', pokemon);
 
         cy.get('ul[class="info"]').children().first().should('contain', 'Height');
         cy.get('ul[class="info"]').children().last().prev().should('contain', 'Weight');
@@ -43,16 +38,17 @@ describe('Selecionando Pokémons', function () {
     });
 
     it('Deve ser possível fechar um card de informações de um pokemon', function () {
-        cy.searchPokemon(wantedPokemon);
+        cy.searchPokemon(pokemon);
         cy.get('.card-pokemon').first().click();
+        
         cy.get('[class="box"]')
-            .should('exist')
-            .and('be.visible');
-
+            .should('be.visible')
+            .and('have.length', 1);
+        
         cy.get('[title="Close"]').click();
         cy.get('[class="box"]')
-            .should('exist')
-            .and('not.be.visible')
+            .should('not.be.visible')
+            .and('have.length', 1)
             .screenshot();
     });
 });

@@ -1,5 +1,3 @@
-/// <reference types='cypress' />
-
 describe('Informações de um pokemon', function () {
     const urlPok = Cypress.env('API_POK');
 

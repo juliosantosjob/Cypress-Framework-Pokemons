@@ -1,5 +1,3 @@
-/// <reference types='cypress' />
-
 beforeEach(function () { 
     cy.log('Start');
     cy.goTo();

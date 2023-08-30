@@ -1,8 +1,6 @@
-// Commands import
-import './commands/selectPok';
-import './utils/hooks';
-
 // plugins support
+import './hooks';
+import './commands_helper';
 import 'cypress-plugin-api';
 import 'cypress-mochawesome-reporter/register';
 
