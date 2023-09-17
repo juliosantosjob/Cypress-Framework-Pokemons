@@ -1,7 +1,6 @@
 // plugins support
 import './hooks';
 import './commands_helper';
-import 'cypress-plugin-api';
 import 'cypress-mochawesome-reporter/register';
 
 // Help hiding requests in command logs

@@ -16,8 +16,5 @@
     "cypress-mochawesome-reporter": "^3.2.3",
     "dotenv": "^16.0.3",
     "eslint-plugin-cypress": "^2.12.1"
-  },
-  "dependencies": {
-    "cypress-plugin-api": "^2.10.0"
   }
 }

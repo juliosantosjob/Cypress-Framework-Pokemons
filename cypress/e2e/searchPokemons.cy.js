@@ -1,4 +1,4 @@
-import { randomPokemons } from '../../support/randomMass';
+import { randomPokemons } from '../support/randomMass';
 
 describe('Pesquisando Pokemons', function () {
     const pokemon = randomPokemons();
