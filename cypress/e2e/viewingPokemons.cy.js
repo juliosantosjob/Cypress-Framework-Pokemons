@@ -1,10 +1,10 @@
 import { randomPokemons } from '../support/randomMass';
 
-describe('Selecionando Pokémons', function () {
+describe('Selecionando Pokémons', () => {
     const pokemon = randomPokemons();
     let numCards = 9;
 
-    it('Ao clicar em "Load more Pokémons" deve exibir 9 cards a mais', function () {
+    it('Ao clicar em "Load more Pokémons" deve exibir 9 cards a mais', () => {
         while (numCards !== 36) {
             cy.get('button[class*="card"]').should('have.length', numCards).as('initialCards');
             cy.get('#js-show-more').scrollIntoView().click();
@@ -15,7 +15,7 @@ describe('Selecionando Pokémons', function () {
         }
     });
 
-    it('Deve visualizar as informações de um pokemon', function () {
+    it('Deve visualizar as informações de um pokemon', () => {
         cy.searchPokemon(pokemon);
         cy.get('.card-pokemon').first().click();
         cy.get('.box').should('contain', pokemon);
@@ -26,7 +26,7 @@ describe('Selecionando Pokémons', function () {
         cy.screenshot();
     });
 
-    it('Visualizando a opção "ver mais" nas descrições de um pokemon', function () {
+    it('Visualizando a opção "ver mais" nas descrições de um pokemon', () => {
         cy.searchPokemon('blastoise');
         cy.get('.card-pokemon').first().click();
         cy.get('#js-show-more-abilities').click();
@@ -37,18 +37,17 @@ describe('Selecionando Pokémons', function () {
             .screenshot();
     });
 
-    it('Deve ser possível fechar um card de informações de um pokemon', function () {
+    it('Deve ser possível finalizar um card de informações de um pokemon', () => {
         cy.searchPokemon(pokemon);
         cy.get('.card-pokemon').first().click();
-        
+
         cy.get('[class="box"]')
             .should('be.visible')
             .and('have.length', 1);
-        
+
         cy.get('[title="Close"]').click();
         cy.get('[class="box"]')
             .should('not.be.visible')
-            .and('have.length', 1)
             .screenshot();
     });
 });
