@@ -12,7 +12,7 @@ describe('Pesquisando Pokemons', () => {
 
         cy.wait('@wtdPokemon');
 
-        cy.get('button[class*="card"]')
+        cy.get('[class*="card"]')
             .should('have.length', 1)
             .and('be.visible')
             .and('contain', pokemon)
@@ -22,7 +22,9 @@ describe('Pesquisando Pokemons', () => {
     it('Procurando um pokemon que não existe', () => {
         const nonExistentPokemon = 'its_not_pokemon';
 
-        cy.searchPokemon(nonExistentPokemon);
+        cy.get('#js-input-search').as('search');
+        cy.get('@search').scrollIntoView();
+        cy.get('@search').type(`${nonExistentPokemon}{enter}`, { delay: 80 });
         cy.get('strong.js-count-pokemons')
             .should('not.be.empty')
             .and('have.text', '0');

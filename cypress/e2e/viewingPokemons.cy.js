@@ -6,48 +6,56 @@ describe('Selecionando Pokémons', () => {
 
     it('Ao clicar em "Load more Pokémons" deve exibir 9 cards a mais', () => {
         while (numCards !== 36) {
-            cy.get('button[class*="card"]').should('have.length', numCards).as('initialCards');
-            cy.get('#js-show-more').scrollIntoView().click();
+            cy.get('[class*="card"]').should('have.length', numCards).as('initialCards');
+            cy.get('#js-show-more').as('btnShowMore');
+
+            cy.get('@btnShowMore').scrollIntoView();
+            cy.get('@btnShowMore').click();
 
             cy.get('@initialCards').should('have.length', numCards);
             numCards += 9;
-            cy.get('button[class*="card"]').should('have.length', numCards);
+            cy.get('[class*="card"]').should('have.length', numCards);
         }
     });
 
-    it('Deve visualizar as informações de um pokemon', () => {
-        cy.searchPokemon(pokemon);
-        cy.get('.card-pokemon').first().click();
-        cy.get('.box').should('contain', pokemon);
+    context('Dada a busca por um pokemon', () => {
+        beforeEach(() => {
+            cy.searchPokemon(pokemon);
+        });
 
-        cy.get('ul[class="info"]').children().first().should('contain', 'Height');
-        cy.get('ul[class="info"]').children().last().prev().should('contain', 'Weight');
-        cy.get('ul[class="info"]').children().last().should('contain', 'Abilities');
-        cy.screenshot();
-    });
+        it('Deve visualizar as informações de um pokemon', () => {
+            const field = 'ul.info li:nth-child';
 
-    it('Visualizando a opção "ver mais" nas descrições de um pokemon', () => {
-        cy.searchPokemon('blastoise');
-        cy.get('.card-pokemon').first().click();
-        cy.get('#js-show-more-abilities').click();
+            cy.get('.card-pokemon').first().click();
+            cy.get('.box').should('contain', pokemon);
+            
+            cy.get(`${field}(1)`).should('contain', 'Height');
+            cy.get(`${field}(2)`).should('contain', 'Weight');
+            cy.get(`${field}(3)`).should('contain', 'Abilities');
+            cy.screenshot();
+        });
 
-        cy.get('#js-ballon-abilities')
-            .should('exist')
-            .and('have.text', 'Rain-dish')
-            .screenshot();
-    });
+        it('Visualiza a opção "ver mais" nas descrições de um pokemon', () => {
+            cy.get('.card-pokemon').first().click();
+            cy.get('#js-show-more-abilities').click();
 
-    it('Deve ser possível finalizar um card de informações de um pokemon', () => {
-        cy.searchPokemon(pokemon);
-        cy.get('.card-pokemon').first().click();
+            cy.get('#js-ballon-abilities')
+                .should('exist')
+                .and('be.visible')
+                .screenshot();
+        });
 
-        cy.get('[class="box"]')
-            .should('be.visible')
-            .and('have.length', 1);
+        it('Deve ser possível finalizar um card de informações de um pokemon', () => {
+            cy.get('.card-pokemon').first().click();
 
-        cy.get('[title="Close"]').click();
-        cy.get('[class="box"]')
-            .should('not.be.visible')
-            .screenshot();
+            cy.get('[class="box"]')
+                .should('be.visible')
+                .and('have.length', 1);
+
+            cy.get('[title="Close"]').click();
+            cy.get('[class="box"]')
+                .should('not.be.visible')
+                .screenshot();
+        });
     });
 });

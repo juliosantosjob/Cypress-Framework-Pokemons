@@ -2,11 +2,14 @@ Cypress.Commands.add('searchPokemon', (pokemonName) => {
     const endpoint = `**/pokemon/${pokemonName}`;
 
     cy.intercept(endpoint.toLowerCase()).as('pokemon');
-
     cy.get('#js-input-search').as('search');
     cy.get('@search').scrollIntoView();
     cy.get('@search').type(`${pokemonName}{enter}`, { delay: 80 });
     cy.wait('@pokemon');
+
+    cy.get('[class*="card"]')
+        .should('contain', pokemonName)
+        .and('be.visible');
 });
 
 Cypress.Commands.add('goTo', () => {
