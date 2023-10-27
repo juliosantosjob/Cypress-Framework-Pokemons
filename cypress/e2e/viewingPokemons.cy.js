@@ -1,6 +1,6 @@
 import { randomPokemons } from '../support/randomMass';
 
-describe('Selecionando Pokémons', () => {
+describe('Visualizando pokémons', () => {
     const pokemon = randomPokemons();
     let numCards = 9;
 
