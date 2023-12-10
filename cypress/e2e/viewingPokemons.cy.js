@@ -35,13 +35,12 @@ describe('Visualizando pokémons', () => {
             cy.screenshot();
         });
 
-        it('Visualiza a opção "ver mais" nas descrições de um pokemon', () => {
+        it.only('Visualiza a opção "ver mais" nas descrições de um pokemon', () => {
             cy.get('.card-pokemon').first().click();
             cy.get('#js-show-more-abilities').click();
 
             cy.get('#js-ballon-abilities')
-                .should('exist')
-                .and('be.visible')
+                .should('be.visible')
                 .screenshot();
         });
 
