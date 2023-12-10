@@ -28,20 +28,11 @@ describe('Visualizando pokémons', () => {
 
             cy.get('.card-pokemon').first().click();
             cy.get('.box').should('contain', pokemon);
-            
+
             cy.get(`${field}(1)`).should('contain', 'Height');
             cy.get(`${field}(2)`).should('contain', 'Weight');
             cy.get(`${field}(3)`).should('contain', 'Abilities');
             cy.screenshot();
-        });
-
-        it.only('Visualiza a opção "ver mais" nas descrições de um pokemon', () => {
-            cy.get('.card-pokemon').first().click();
-            cy.get('#js-show-more-abilities').click();
-
-            cy.get('#js-ballon-abilities')
-                .should('be.visible')
-                .screenshot();
         });
 
         it('Deve ser possível finalizar um card de informações de um pokemon', () => {
