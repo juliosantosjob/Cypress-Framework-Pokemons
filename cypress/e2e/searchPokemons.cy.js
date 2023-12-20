@@ -2,7 +2,7 @@ import { randomPokemons } from '../support/randomMass';
 
 describe('Funções de busca', () => {
     const pokemon = randomPokemons();
-    const nonExistentPokemon = 'its_not_pokemon';
+    const nonExistentPokemon = 'non-existent_pokemon';
 
     it('Buscando um pokemon aleatório na barra de busca', () => {
         cy.intercept(`**/pokemon/${pokemon.toLowerCase()}`).as('wtdPokemon');

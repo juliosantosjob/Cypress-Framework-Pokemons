@@ -19,19 +19,20 @@ describe('Visualizando pokémons', () => {
     });
 
     context('Dada a busca por um pokemon', () => {
+
         beforeEach(() => {
             cy.searchPokemon(pokemon);
         });
 
         it('Deve visualizar as informações de um pokemon', () => {
-            const field = 'ul.info li:nth-child';
+            const fld = 'ul.info li:nth-child';
 
             cy.get('.card-pokemon').first().click();
             cy.get('.box').should('contain', pokemon);
 
-            cy.get(`${field}(1)`).should('contain', 'Height');
-            cy.get(`${field}(2)`).should('contain', 'Weight');
-            cy.get(`${field}(3)`).should('contain', 'Abilities');
+            cy.get(`${fld}(1)`).should('contain', 'Height');
+            cy.get(`${fld}(2)`).should('contain', 'Weight');
+            cy.get(`${fld}(3)`).should('contain', 'Abilities');
             cy.screenshot();
         });
 
