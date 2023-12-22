@@ -4,7 +4,7 @@
   "description": "Api and E2E automation training",
   "main": "index.js",
   "scripts": {
-    "test": "cypress run --config video=true",
+    "test": "cypress run --config video=false",
     "open": "cypress open",
     "test:report": "cypress run --spec cypress/e2e/** --browser chrome"
   },
