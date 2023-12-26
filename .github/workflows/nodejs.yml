@@ -9,21 +9,22 @@ on:
 jobs:
   regression-test:
     runs-on: ubuntu-latest
-    container: cypress/browsers:node12.18.3-chrome87-ff82
     steps:
-      - name: Checkout project
-        uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: Build Docker Image
-        run: docker build -t cypress-test .    
+      - name: EsLint verify
+        run: npm run lint  
 
-      - name: Run Cypress Tests
-        run: |
-          docker run cypress-test
+      - name: Runner tests
+        uses: cypress-io/github-action@v5
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
+          API_POK: ${{ secrets.API_POK }}
+          build: npm run build
+          start: npm run test:report
           
-      - name: Deploy to GitHub Pages
+      - name: Report deploy to gitHub pages
         if: always()
         uses: crazy-max/ghaction-github-pages@v3
         with:
