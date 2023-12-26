@@ -9,12 +9,9 @@ on:
 jobs:
   regression-test:
     runs-on: ubuntu-latest
-
-    container:
-      image: cypress/included
-
+    container: cypress/browsers:node12.18.3-chrome87-ff82
     steps:
-      - name: Checkout
+      - name: Checkout project
         uses: actions/checkout@v4
 
       - name: Build Docker Image
