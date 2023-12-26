@@ -1,6 +1,6 @@
 import { randomPokemons } from '../support/randomMass';
 
-describe('Visualizando pokémons', () => {
+describe('Exibindo pokémons', () => {
     const pokemon = randomPokemons();
     let numCards = 9;
 
@@ -16,15 +16,14 @@ describe('Visualizando pokémons', () => {
             numCards += 9;
             cy.get('[class*="card"]').should('have.length', numCards);
         }
+        cy.screenshot();
     });
 
     context('Dada a busca por um pokemon', () => {
 
-        beforeEach(() => {
-            cy.searchPokemon(pokemon);
-        });
+        beforeEach(() => { cy.searchPokemon(pokemon); });
 
-        it('Deve visualizar as informações de um pokemon', () => {
+        it('Deve exibir as informações de um pokemon', () => {
             const fld = 'ul.info li:nth-child';
 
             cy.get('.card-pokemon').first().click();
@@ -38,15 +37,11 @@ describe('Visualizando pokémons', () => {
 
         it('Deve ser possível finalizar um card de informações de um pokemon', () => {
             cy.get('.card-pokemon').first().click();
-
-            cy.get('[class="box"]')
-                .should('be.visible')
-                .and('have.length', 1);
+            cy.get('[class="box"]').should('be.visible').and('have.length', 1);
 
             cy.get('[title="Close"]').click();
-            cy.get('[class="box"]')
-                .should('not.be.visible')
-                .screenshot();
+            cy.get('[class="box"]').should('not.be.visible');
+            cy.screenshot();
         });
     });
 });

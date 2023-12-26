@@ -1,6 +1,6 @@
 import { randomPokemons } from '../support/randomMass';
 
-describe('Funções de busca', () => {
+describe('Procurando pokémons', () => {
     const pokemon = randomPokemons();
     const nonExistentPokemon = 'non-existent_pokemon';
 
