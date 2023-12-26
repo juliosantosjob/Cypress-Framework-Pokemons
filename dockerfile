@@ -1,19 +1,17 @@
-FROM cypress/included
+# Usa uma imagem oficial do Node como base
+FROM cypress/included:12.7.0
 
-WORKDIR /user/app
+# Define o diretório de trabalho no contêiner
+WORKDIR /tests
 
+# Copia os arquivos package.json e package-lock.json para o diretório de trabalho
 COPY package*.json ./
 
+# Instala as dependências especificadas no package.json
 RUN npm install
 
+# Copia o código local para o contêiner
 COPY . .
 
-# CMD ["npm", "run", "open"]
-
-# RUN npm run open
-
-
-
-# docker rmi -f cypress-test
-# docker build -t cypress-test .
-# docker run cypress-test
+# Comando padrão para abrir o Cypress interativamente
+ENTRYPOINT  ["npm", "run", "test"]

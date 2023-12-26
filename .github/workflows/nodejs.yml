@@ -9,17 +9,22 @@ on:
 jobs:
   regression-test:
     runs-on: ubuntu-latest
+
+    container:
+      image: cypress/included
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Runner Tests
-        uses: cypress-io/github-action@v5
+      - name: Build Docker Image
+        run: docker build -t cypress-test .    
+
+      - name: Run Cypress Tests
+        run: |
+          docker run cypress-test
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
-          API_POK: ${{ secrets.API_POK }}
-          build: npm run build
-          start: npm run test:report
           
       - name: Deploy to GitHub Pages
         if: always()
