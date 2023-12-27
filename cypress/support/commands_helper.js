@@ -12,7 +12,7 @@ Cypress.Commands.add('searchPokemon', (pokemonName) => {
         .and('be.visible');
 });
 
-Cypress.Commands.add('go', () => {
+Cypress.Commands.add('goApp', () => {
     cy.intercept('**/v2/type').as('pokeapi');
     cy.visit('/projetos/pokeapi');
 
