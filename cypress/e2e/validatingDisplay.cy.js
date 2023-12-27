@@ -6,15 +6,15 @@ describe('Validando a exibição', () => {
 
     it('Validando que ao clicar em "Load more Pokémons", sejam exibidos 9 cards adicionais', () => {
         while (numCards !== 36) {
-            cy.get('[class*="card"]').should('have.length', numCards).as('initialCards');
+            cy.get('.card-pokemon').should('have.length', numCards).as('initialCards');
             cy.get('#js-show-more').as('btnShowMore');
 
             cy.get('@btnShowMore').scrollIntoView();
             cy.get('@btnShowMore').click();
 
             cy.get('@initialCards').should('have.length', numCards);
-            numCards += 9;
-            cy.get('[class*="card"]').should('have.length', numCards);
+            numCards += 9;            
+            cy.get('.card-pokemon').should('have.length', numCards);
         }
         cy.screenshot();
     });
