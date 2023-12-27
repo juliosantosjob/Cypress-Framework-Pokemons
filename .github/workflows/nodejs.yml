@@ -10,24 +10,23 @@ jobs:
   regression-test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Project checkout
+        uses: actions/checkout@v4
 
-      - name: Install dependencies
+      - name: Installing dependencies
         run: npm install
 
       - name: EsLint verify
         run: npm run lint  
 
-      - name: Runner tests
+      - name: Running the tests
         uses: cypress-io/github-action@v5
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
-          API_POK: ${{ secrets.API_POK }}
           build: npm run build
           start: npm run test:report
           
-      - name: Report deploy to gitHub pages
+      - name: Adding reports to GitHub pages
         if: always()
         uses: crazy-max/ghaction-github-pages@v3
         with:

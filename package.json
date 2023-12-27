@@ -1,7 +1,7 @@
 {
   "name": "cypress-framework-pokemons",
   "version": "1.0.0",
-  "description": "Api and E2E automation training",
+  "description": "E2E Automated Testing Project",
   "main": "index.js",
   "scripts": {
     "test": "cypress run --config video=false",

@@ -1,6 +1,6 @@
 beforeEach(function () { 
     cy.log('Start');
-    cy.goTo();
+    cy.go();
 });
 
 afterEach(function () {
