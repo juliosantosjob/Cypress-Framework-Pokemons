@@ -6,6 +6,9 @@ on:
     branches:
       - 'master'
 
+  schedule:
+    - cron: '0 12,15,18 * * 1-5'  
+
 jobs:
   regression-test:
     runs-on: ubuntu-latest
