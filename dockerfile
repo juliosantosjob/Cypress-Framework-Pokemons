@@ -13,5 +13,5 @@ RUN npm install
 # Copia o código local para o contêiner
 COPY . .
 
-# Comando padrão para abrir o Cypress interativamente
+# Comando padrão para executar o Cypress
 ENTRYPOINT  ["npm", "run", "test"]
