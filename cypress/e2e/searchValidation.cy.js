@@ -10,8 +10,8 @@ describe('Validação de busca', () => {
         cy.wait('@wtdPokemon');
 
         cy.contains('.card-pokemon', pokemon)
-            .should('have.length', 1)
-            .and('be.visible')
+            .should('be.visible')
+            .and('have.length', 1)
             .screenshot();
     });
 
