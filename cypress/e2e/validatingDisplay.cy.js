@@ -20,6 +20,7 @@ describe('Validando a exibição', () => {
     });
 
     context('Dada a pesquisa por um pokémon', () => {
+        
         beforeEach(() => { 
             cy.searchPokemon(pokemon); 
         });
@@ -28,7 +29,7 @@ describe('Validando a exibição', () => {
             const fld = 'ul.info li:nth-child';
 
             cy.get('.card-pokemon').first().click();
-            cy.get('.box').should('contain', pokemon);
+            cy.contains('.box', pokemon);
 
             cy.get(`${fld}(1)`).should('contain', 'Height');
             cy.get(`${fld}(2)`).should('contain', 'Weight');
@@ -38,7 +39,9 @@ describe('Validando a exibição', () => {
 
         it('Deve ser possível finalizar o card de informações de um pokemon', () => {
             cy.get('.card-pokemon').first().click();
-            cy.get('[class="box"]').should('be.visible').and('have.length', 1);
+            cy.get('[class="box"]')
+                .should('be.visible')
+                .and('have.length', 1);
 
             cy.get('[title="Close"]').click();
             cy.get('[class="box"]').should('not.be.visible');
