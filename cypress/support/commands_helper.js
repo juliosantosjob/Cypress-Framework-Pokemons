@@ -7,8 +7,7 @@ Cypress.Commands.add('searchPokemon', (pokemonName) => {
     cy.get('@search').type(`${pokemonName}{enter}`, { delay: 80 });
     cy.wait('@pokemon');
 
-    cy.get('[class*="card"]')
-        .should('contain', pokemonName)
+    cy.contains('[class*="card"]', pokemonName)
         .and('be.visible');
 });
 
