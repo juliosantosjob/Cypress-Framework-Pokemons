@@ -9,10 +9,9 @@ describe('Validação de busca', () => {
         cy.get('#js-input-search').type(`${pokemon}{enter}`, { delay: 80 });
         cy.wait('@wtdPokemon');
 
-        cy.get('.card-pokemon')
+        cy.contains('.card-pokemon', pokemon)
             .should('have.length', 1)
             .and('be.visible')
-            .and('contain', pokemon)
             .screenshot();
     });
 
