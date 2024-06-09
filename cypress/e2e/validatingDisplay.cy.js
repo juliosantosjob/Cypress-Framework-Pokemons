@@ -6,6 +6,7 @@ describe('Validando a exibição', () => {
 
     it('Validando que ao clicar em "Load more Pokémons", sejam exibidos 9 cards adicionais', () => {
         let numCards = 9;
+        
         while (numCards !== 36) {
             cy.get('.card-pokemon').should('have.length', numCards).as('initialCards');
             cy.get('#js-show-more').as('btnShowMore');
