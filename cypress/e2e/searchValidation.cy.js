@@ -19,7 +19,7 @@ describe('Validação de busca', () => {
 
     it('Verificando a busca por um pokémon inexistente', () => {
         cy.get('#js-input-search')
-            .type('non-existent_pokemon{enter}', { delay: 80 });
+            .type('non_existent_pokemon{enter}', { delay: 80 });
             
         cy.get('strong.js-count-pokemons')
             .should('not.be.empty')
