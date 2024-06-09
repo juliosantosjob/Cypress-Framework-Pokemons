@@ -8,7 +8,8 @@ describe('Validando a exibição', () => {
         let numCards = 9;
         
         while (numCards !== 36) {
-            cy.get('.card-pokemon').should('have.length', numCards).as('initialCards');
+            cy.get('.card-pokemon').should('have.length', numCards)
+                .as('initialCards');
             cy.get('#js-show-more').as('btnShowMore');
 
             cy.get('@btnShowMore').scrollIntoView();
@@ -27,7 +28,7 @@ describe('Validando a exibição', () => {
 
         it('Deve exibir as informações de um pokemon', () => {
             cy.get('.card-pokemon').first().click();
-            cy.contains('.box', pokemon);
+            cy.contains('.box', pokemon).should('be.visible');
 
             cy.get('ul.info li:nth-child(1)').should('contain', 'Height');
             cy.get('ul.info li:nth-child(2)').should('contain', 'Weight');
@@ -36,8 +37,7 @@ describe('Validando a exibição', () => {
 
         it('Deve ser possível finalizar o card de informações de um pokemon', () => {
             cy.get('.card-pokemon').first().click();
-            cy.get('[class="box"]')
-                .should('be.visible')
+            cy.get('[class="box"]').should('be.visible')
                 .and('have.length', 1);
 
             cy.get('[title="Close"]').click();
