@@ -1,10 +1,11 @@
 import { randomPokemons } from '../support/randomMass';
 
 describe('Validando a exibição', () => {
-    const pokemon = randomPokemons();
-    let numCards = 9;
+    
+    afterEach(() => cy.screenshot());
 
     it('Validando que ao clicar em "Load more Pokémons", sejam exibidos 9 cards adicionais', () => {
+        let numCards = 9;
         while (numCards !== 36) {
             cy.get('.card-pokemon').should('have.length', numCards).as('initialCards');
             cy.get('#js-show-more').as('btnShowMore');
@@ -16,25 +17,20 @@ describe('Validando a exibição', () => {
             numCards += 9;            
             cy.get('.card-pokemon').should('have.length', numCards);
         }
-        cy.screenshot();
     });
 
     context('Dada a pesquisa por um pokémon', () => {
+        const pokemon = randomPokemons();
         
-        beforeEach(() => { 
-            cy.searchPokemon(pokemon); 
-        });
+        beforeEach(() => cy.searchPokemon(pokemon));
 
         it('Deve exibir as informações de um pokemon', () => {
-            const fld = 'ul.info li:nth-child';
-
             cy.get('.card-pokemon').first().click();
             cy.contains('.box', pokemon);
 
-            cy.get(`${fld}(1)`).should('contain', 'Height');
-            cy.get(`${fld}(2)`).should('contain', 'Weight');
-            cy.get(`${fld}(3)`).should('contain', 'Abilities');
-            cy.screenshot();
+            cy.get('ul.info li:nth-child(1)').should('contain', 'Height');
+            cy.get('ul.info li:nth-child(2)').should('contain', 'Weight');
+            cy.get('ul.info li:nth-child(3)').should('contain', 'Abilities');
         });
 
         it('Deve ser possível finalizar o card de informações de um pokemon', () => {
@@ -45,7 +41,6 @@ describe('Validando a exibição', () => {
 
             cy.get('[title="Close"]').click();
             cy.get('[class="box"]').should('not.be.visible');
-            cy.screenshot();
         });
     });
 });
