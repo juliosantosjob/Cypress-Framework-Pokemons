@@ -7,8 +7,10 @@ describe('Validação de busca', () => {
     it('Confirmando que o pokémon procurado é exibido corretamente', () => {
         const pokemon = randomPokemons();
         
-        cy.intercept(`**/pokemon/${pokemon.toLowerCase()}`).as('wtdPokemon');
-        cy.get('#js-input-search').type(`${pokemon}{enter}`, { delay: 80 });
+        cy.intercept(`**/pokemon/${pokemon.toLowerCase()}`)
+            .as('wtdPokemon');
+        cy.get('#js-input-search')
+            .type(`${pokemon}{enter}`, { delay: 80 });
         cy.wait('@wtdPokemon');
 
         cy.contains('.card-pokemon', pokemon)
